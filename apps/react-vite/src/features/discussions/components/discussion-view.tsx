@@ -1,26 +1,26 @@
-import { MDPreview } from '@/components/ui/md-preview';
-import { Spinner } from '@/components/ui/spinner';
-import { formatDate } from '@/utils/format';
+import { MDPreview } from '@/components/ui/md-preview'
+import { Spinner } from '@/components/ui/spinner'
+import { formatDate } from '@/utils/format'
 
-import { useDiscussion } from '../api/get-discussion';
-import { UpdateDiscussion } from '../components/update-discussion';
+import { useDiscussion } from '../api/get-discussion'
+import { UpdateDiscussion } from '../components/update-discussion'
 
 export const DiscussionView = ({ discussionId }: { discussionId: string }) => {
   const discussionQuery = useDiscussion({
-    discussionId,
-  });
+    discussionId
+  })
 
   if (discussionQuery.isLoading) {
     return (
       <div className="flex h-48 w-full items-center justify-center">
         <Spinner size="lg" />
       </div>
-    );
+    )
   }
 
-  const discussion = discussionQuery?.data?.data;
+  const discussion = discussionQuery?.data?.data
 
-  if (!discussion) return null;
+  if (!discussion) return null
 
   return (
     <div>
@@ -47,5 +47,5 @@ export const DiscussionView = ({ discussionId }: { discussionId: string }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

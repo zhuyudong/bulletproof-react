@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Head } from '../seo';
+import { Head } from '../seo'
 
 type ContentLayoutProps = {
-  children: React.ReactNode;
-  title: string;
-};
+  children: React.ReactNode
+  title: string
+}
 
 export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
   return (
@@ -20,5 +20,5 @@ export const ContentLayout = ({ children, title }: ContentLayoutProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

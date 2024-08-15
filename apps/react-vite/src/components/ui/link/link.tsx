@@ -1,6 +1,7 @@
-import { Link as RouterLink, LinkProps } from 'react-router-dom';
+import type { LinkProps } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/cn'
 
 export const Link = ({ className, children, ...props }: LinkProps) => {
   return (
@@ -10,5 +11,5 @@ export const Link = ({ className, children, ...props }: LinkProps) => {
     >
       {children}
     </RouterLink>
-  );
-};
+  )
+}

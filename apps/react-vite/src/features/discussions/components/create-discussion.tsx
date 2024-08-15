@@ -1,27 +1,27 @@
-import { Plus } from 'lucide-react';
+import { Plus } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { Form, FormDrawer, Input, Textarea } from '@/components/ui/form';
-import { useNotifications } from '@/components/ui/notifications';
-import { Authorization, ROLES } from '@/lib/authorization';
+import { Button } from '@/components/ui/button'
+import { Form, FormDrawer, Input, Textarea } from '@/components/ui/form'
+import { useNotifications } from '@/components/ui/notifications'
+import { Authorization, ROLES } from '@/lib/authorization'
 
 import {
   createDiscussionInputSchema,
-  useCreateDiscussion,
-} from '../api/create-discussion';
+  useCreateDiscussion
+} from '../api/create-discussion'
 
 export const CreateDiscussion = () => {
-  const { addNotification } = useNotifications();
+  const { addNotification } = useNotifications()
   const createDiscussionMutation = useCreateDiscussion({
     mutationConfig: {
       onSuccess: () => {
         addNotification({
           type: 'success',
-          title: 'Discussion Created',
-        });
-      },
-    },
-  });
+          title: 'Discussion Created'
+        })
+      }
+    }
+  })
 
   return (
     <Authorization allowedRoles={[ROLES.ADMIN]}>
@@ -46,8 +46,8 @@ export const CreateDiscussion = () => {
       >
         <Form
           id="create-discussion"
-          onSubmit={(values) => {
-            createDiscussionMutation.mutate({ data: values });
+          onSubmit={values => {
+            createDiscussionMutation.mutate({ data: values })
           }}
           schema={createDiscussionInputSchema}
         >
@@ -69,5 +69,5 @@ export const CreateDiscussion = () => {
         </Form>
       </FormDrawer>
     </Authorization>
-  );
-};
+  )
+}

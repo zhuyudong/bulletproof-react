@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/components/ui/button';
-import { useDisclosure } from '@/hooks/use-disclosure';
+import { Button } from '@/components/ui/button'
+import { useDisclosure } from '@/hooks/use-disclosure'
 
 import {
   Drawer,
@@ -11,28 +11,28 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
-} from './drawer';
+  DrawerTrigger
+} from './drawer'
 
 const meta: Meta<typeof Drawer> = {
-  component: Drawer,
-};
+  component: Drawer
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Drawer>;
+type Story = StoryObj<typeof Drawer>
 
 const DemoDrawer = () => {
-  const { close, open, isOpen } = useDisclosure();
+  const { close, open, isOpen } = useDisclosure()
 
   return (
     <Drawer
       open={isOpen}
-      onOpenChange={(isOpen) => {
+      onOpenChange={isOpen => {
         if (!isOpen) {
-          close();
+          close()
         } else {
-          open();
+          open()
         }
       }}
     >
@@ -56,9 +56,9 @@ const DemoDrawer = () => {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  );
-};
+  )
+}
 
 export const Default: Story = {
-  render: () => <DemoDrawer />,
-};
+  render: () => <DemoDrawer />
+}

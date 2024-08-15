@@ -1,8 +1,8 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { Button } from '@/components/ui/button';
-import { useDisclosure } from '@/hooks/use-disclosure';
-import { rtlRender, screen, userEvent, waitFor } from '@/testing/test-utils';
+import { Button } from '@/components/ui/button'
+import { useDisclosure } from '@/hooks/use-disclosure'
+import { rtlRender, screen, userEvent, waitFor } from '@/testing/test-utils'
 
 import {
   Dialog,
@@ -10,25 +10,25 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from '../dialog';
+  DialogTrigger
+} from '../dialog'
 
-const openButtonText = 'Open Modal';
-const cancelButtonText = 'Cancel';
-const titleText = 'Modal Title';
+const openButtonText = 'Open Modal'
+const cancelButtonText = 'Cancel'
+const titleText = 'Modal Title'
 
 const TestDialog = () => {
-  const { close, open, isOpen } = useDisclosure();
-  const cancelButtonRef = React.useRef(null);
+  const { close, open, isOpen } = useDisclosure()
+  const cancelButtonRef = React.useRef(null)
 
   return (
     <Dialog
       open={isOpen}
-      onOpenChange={(isOpen) => {
+      onOpenChange={isOpen => {
         if (!isOpen) {
-          close();
+          close()
         } else {
-          open();
+          open()
         }
       }}
     >
@@ -48,21 +48,21 @@ const TestDialog = () => {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
 test('should handle basic dialog flow', async () => {
-  rtlRender(<TestDialog />);
+  rtlRender(<TestDialog />)
 
-  expect(screen.queryByText(titleText)).not.toBeInTheDocument();
+  expect(screen.queryByText(titleText)).not.toBeInTheDocument()
 
-  await userEvent.click(screen.getByRole('button', { name: openButtonText }));
+  await userEvent.click(screen.getByRole('button', { name: openButtonText }))
 
-  expect(await screen.findByText(titleText)).toBeInTheDocument();
+  expect(await screen.findByText(titleText)).toBeInTheDocument()
 
-  await userEvent.click(screen.getByRole('button', { name: cancelButtonText }));
+  await userEvent.click(screen.getByRole('button', { name: cancelButtonText }))
 
   await waitFor(() =>
-    expect(screen.queryByText(titleText)).not.toBeInTheDocument(),
-  );
-});
+    expect(screen.queryByText(titleText)).not.toBeInTheDocument()
+  )
+})

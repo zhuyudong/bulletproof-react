@@ -1,14 +1,15 @@
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  DotsHorizontalIcon,
-} from '@radix-ui/react-icons';
-import * as React from 'react';
+  DotsHorizontalIcon
+} from '@radix-ui/react-icons'
+import * as React from 'react'
 
-import { ButtonProps, buttonVariants } from '@/components/ui/button';
-import { cn } from '@/utils/cn';
+import type { ButtonProps } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/utils/cn'
 
-import { Link } from '../link';
+import { Link } from '../link'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -17,8 +18,8 @@ const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
     className={cn('mx-auto flex w-full justify-center', className)}
     {...props}
   />
-);
-Pagination.displayName = 'Pagination';
+)
+Pagination.displayName = 'Pagination'
 
 const PaginationContent = React.forwardRef<
   HTMLUListElement,
@@ -29,21 +30,21 @@ const PaginationContent = React.forwardRef<
     className={cn('flex flex-row items-center gap-1', className)}
     {...props}
   />
-));
-PaginationContent.displayName = 'PaginationContent';
+))
+PaginationContent.displayName = 'PaginationContent'
 
 const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<'li'>
 >(({ className, ...props }, ref) => (
   <li ref={ref} className={cn('', className)} {...props} />
-));
-PaginationItem.displayName = 'PaginationItem';
+))
+PaginationItem.displayName = 'PaginationItem'
 
 type PaginationLinkProps = {
-  isActive?: boolean;
+  isActive?: boolean
 } & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<'a'>;
+  React.ComponentProps<'a'>
 
 const PaginationLink = ({
   className,
@@ -59,16 +60,16 @@ const PaginationLink = ({
     className={cn(
       buttonVariants({
         variant: isActive ? 'outline' : 'ghost',
-        size,
+        size
       }),
-      className,
+      className
     )}
     {...props}
   >
     {children}
   </Link>
-);
-PaginationLink.displayName = 'PaginationLink';
+)
+PaginationLink.displayName = 'PaginationLink'
 
 const PaginationPrevious = ({
   className,
@@ -83,8 +84,8 @@ const PaginationPrevious = ({
     <ChevronLeftIcon className="size-4" />
     <span>Previous</span>
   </PaginationLink>
-);
-PaginationPrevious.displayName = 'PaginationPrevious';
+)
+PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({
   className,
@@ -99,8 +100,8 @@ const PaginationNext = ({
     <span>Next</span>
     <ChevronRightIcon className="size-4" />
   </PaginationLink>
-);
-PaginationNext.displayName = 'PaginationNext';
+)
+PaginationNext.displayName = 'PaginationNext'
 
 const PaginationEllipsis = ({
   className,
@@ -114,8 +115,8 @@ const PaginationEllipsis = ({
     <DotsHorizontalIcon className="size-4" />
     <span className="sr-only">More pages</span>
   </span>
-);
-PaginationEllipsis.displayName = 'PaginationEllipsis';
+)
+PaginationEllipsis.displayName = 'PaginationEllipsis'
 
 export {
   Pagination,
@@ -124,21 +125,21 @@ export {
   PaginationItem,
   PaginationPrevious,
   PaginationNext,
-  PaginationEllipsis,
-};
+  PaginationEllipsis
+}
 
 export type TablePaginationProps = {
-  totalPages: number;
-  currentPage: number;
-  rootUrl: string;
-};
+  totalPages: number
+  currentPage: number
+  rootUrl: string
+}
 
 export const TablePagination = ({
   totalPages,
   currentPage,
-  rootUrl,
+  rootUrl
 }: TablePaginationProps) => {
-  const createHref = (page: number) => `${rootUrl}?page=${page}`;
+  const createHref = (page: number) => `${rootUrl}?page=${page}`
 
   return (
     <Pagination className="justify-end py-8">
@@ -184,5 +185,5 @@ export const TablePagination = ({
         )}
       </PaginationContent>
     </Pagination>
-  );
-};
+  )
+}

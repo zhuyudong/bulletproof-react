@@ -1,29 +1,29 @@
-import * as React from 'react';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import * as React from 'react'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import logo from '@/assets/logo.svg';
-import { Head } from '@/components/seo';
-import { Link } from '@/components/ui/link';
-import { useUser } from '@/lib/auth';
+import logo from '@/assets/logo.svg'
+import { Head } from '@/components/seo'
+import { Link } from '@/components/ui/link'
+import { useUser } from '@/lib/auth'
 
 type LayoutProps = {
-  children: React.ReactNode;
-  title: string;
-};
+  children: React.ReactNode
+  title: string
+}
 
 export const AuthLayout = ({ children, title }: LayoutProps) => {
-  const user = useUser();
+  const user = useUser()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (user.data) {
       navigate('/app', {
-        replace: true,
-      });
+        replace: true
+      })
     }
-  }, [user.data, navigate]);
+  }, [user.data, navigate])
 
   return (
     <>
@@ -48,5 +48,5 @@ export const AuthLayout = ({ children, title }: LayoutProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}

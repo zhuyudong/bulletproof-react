@@ -1,12 +1,12 @@
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Outlet, useLocation } from 'react-router-dom'
 
-import { DashboardLayout } from '@/components/layouts';
-import { Spinner } from '@/components/ui/spinner';
+import { DashboardLayout } from '@/components/layouts'
+import { Spinner } from '@/components/ui/spinner'
 
 export const AppRoot = () => {
-  const location = useLocation();
+  const location = useLocation()
   return (
     <DashboardLayout>
       <Suspense
@@ -24,5 +24,5 @@ export const AppRoot = () => {
         </ErrorBoundary>
       </Suspense>
     </DashboardLayout>
-  );
-};
+  )
+}

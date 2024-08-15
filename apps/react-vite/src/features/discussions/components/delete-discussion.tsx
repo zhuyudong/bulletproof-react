@@ -1,28 +1,28 @@
-import { Trash } from 'lucide-react';
+import { Trash } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { ConfirmationDialog } from '@/components/ui/dialog';
-import { useNotifications } from '@/components/ui/notifications';
-import { Authorization, ROLES } from '@/lib/authorization';
+import { Button } from '@/components/ui/button'
+import { ConfirmationDialog } from '@/components/ui/dialog'
+import { useNotifications } from '@/components/ui/notifications'
+import { Authorization, ROLES } from '@/lib/authorization'
 
-import { useDeleteDiscussion } from '../api/delete-discussion';
+import { useDeleteDiscussion } from '../api/delete-discussion'
 
 type DeleteDiscussionProps = {
-  id: string;
-};
+  id: string
+}
 
 export const DeleteDiscussion = ({ id }: DeleteDiscussionProps) => {
-  const { addNotification } = useNotifications();
+  const { addNotification } = useNotifications()
   const deleteDiscussionMutation = useDeleteDiscussion({
     mutationConfig: {
       onSuccess: () => {
         addNotification({
           type: 'success',
-          title: 'Discussion Deleted',
-        });
-      },
-    },
-  });
+          title: 'Discussion Deleted'
+        })
+      }
+    }
+  })
 
   return (
     <Authorization allowedRoles={[ROLES.ADMIN]}>
@@ -49,5 +49,5 @@ export const DeleteDiscussion = ({ id }: DeleteDiscussionProps) => {
         }
       />
     </Authorization>
-  );
-};
+  )
+}

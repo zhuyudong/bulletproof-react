@@ -1,29 +1,29 @@
-import { Button } from '@/components/ui/button';
-import { ConfirmationDialog } from '@/components/ui/dialog';
-import { useNotifications } from '@/components/ui/notifications';
-import { useUser } from '@/lib/auth';
+import { Button } from '@/components/ui/button'
+import { ConfirmationDialog } from '@/components/ui/dialog'
+import { useNotifications } from '@/components/ui/notifications'
+import { useUser } from '@/lib/auth'
 
-import { useDeleteUser } from '../api/delete-user';
+import { useDeleteUser } from '../api/delete-user'
 
 type DeleteUserProps = {
-  id: string;
-};
+  id: string
+}
 
 export const DeleteUser = ({ id }: DeleteUserProps) => {
-  const user = useUser();
-  const { addNotification } = useNotifications();
+  const user = useUser()
+  const { addNotification } = useNotifications()
   const deleteUserMutation = useDeleteUser({
     mutationConfig: {
       onSuccess: () => {
         addNotification({
           type: 'success',
-          title: 'User Deleted',
-        });
-      },
-    },
-  });
+          title: 'User Deleted'
+        })
+      }
+    }
+  })
 
-  if (user.data?.id === id) return null;
+  if (user.data?.id === id) return null
 
   return (
     <ConfirmationDialog
@@ -42,5 +42,5 @@ export const DeleteUser = ({ id }: DeleteUserProps) => {
         </Button>
       }
     />
-  );
-};
+  )
+}

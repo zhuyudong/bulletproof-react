@@ -1,35 +1,35 @@
-import { Pen } from 'lucide-react';
+import { Pen } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { Form, FormDrawer, Input, Textarea } from '@/components/ui/form';
-import { useNotifications } from '@/components/ui/notifications';
-import { Authorization, ROLES } from '@/lib/authorization';
+import { Button } from '@/components/ui/button'
+import { Form, FormDrawer, Input, Textarea } from '@/components/ui/form'
+import { useNotifications } from '@/components/ui/notifications'
+import { Authorization, ROLES } from '@/lib/authorization'
 
-import { useDiscussion } from '../api/get-discussion';
+import { useDiscussion } from '../api/get-discussion'
 import {
   updateDiscussionInputSchema,
-  useUpdateDiscussion,
-} from '../api/update-discussion';
+  useUpdateDiscussion
+} from '../api/update-discussion'
 
 type UpdateDiscussionProps = {
-  discussionId: string;
-};
+  discussionId: string
+}
 
 export const UpdateDiscussion = ({ discussionId }: UpdateDiscussionProps) => {
-  const { addNotification } = useNotifications();
-  const discussionQuery = useDiscussion({ discussionId });
+  const { addNotification } = useNotifications()
+  const discussionQuery = useDiscussion({ discussionId })
   const updateDiscussionMutation = useUpdateDiscussion({
     mutationConfig: {
       onSuccess: () => {
         addNotification({
           type: 'success',
-          title: 'Discussion Updated',
-        });
-      },
-    },
-  });
+          title: 'Discussion Updated'
+        })
+      }
+    }
+  })
 
-  const discussion = discussionQuery.data?.data;
+  const discussion = discussionQuery.data?.data
 
   return (
     <Authorization allowedRoles={[ROLES.ADMIN]}>
@@ -54,17 +54,17 @@ export const UpdateDiscussion = ({ discussionId }: UpdateDiscussionProps) => {
       >
         <Form
           id="update-discussion"
-          onSubmit={(values) => {
+          onSubmit={values => {
             updateDiscussionMutation.mutate({
               data: values,
-              discussionId,
-            });
+              discussionId
+            })
           }}
           options={{
             defaultValues: {
               title: discussion?.title ?? '',
-              body: discussion?.body ?? '',
-            },
+              body: discussion?.body ?? ''
+            }
           }}
           schema={updateDiscussionInputSchema}
         >
@@ -85,5 +85,5 @@ export const UpdateDiscussion = ({ discussionId }: UpdateDiscussionProps) => {
         </Form>
       </FormDrawer>
     </Authorization>
-  );
-};
+  )
+}

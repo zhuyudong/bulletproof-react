@@ -1,22 +1,22 @@
-import { SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
+import type { SubmitHandler } from 'react-hook-form'
+import { z } from 'zod'
 
-import { Button } from '@/components/ui/button';
-import { rtlRender, screen, waitFor, userEvent } from '@/testing/test-utils';
+import { Button } from '@/components/ui/button'
+import { rtlRender, screen, waitFor, userEvent } from '@/testing/test-utils'
 
-import { Form } from '../form';
-import { Input } from '../input';
+import { Form } from '../form'
+import { Input } from '../input'
 
 const testData = {
-  title: 'Hello World',
-};
+  title: 'Hello World'
+}
 
 const schema = z.object({
-  title: z.string().min(1, 'Required'),
-});
+  title: z.string().min(1, 'Required')
+})
 
 test('should render and submit a basic Form component', async () => {
-  const handleSubmit = vi.fn() as SubmitHandler<z.infer<typeof schema>>;
+  const handleSubmit = vi.fn() as SubmitHandler<z.infer<typeof schema>>
 
   rtlRender(
     <Form onSubmit={handleSubmit} schema={schema} id="my-form">
@@ -33,20 +33,20 @@ test('should render and submit a basic Form component', async () => {
           </Button>
         </>
       )}
-    </Form>,
-  );
+    </Form>
+  )
 
-  await userEvent.type(screen.getByLabelText(/title/i), testData.title);
+  await userEvent.type(screen.getByLabelText(/title/i), testData.title)
 
-  await userEvent.click(screen.getByRole('button', { name: /submit/i }));
+  await userEvent.click(screen.getByRole('button', { name: /submit/i }))
 
   await waitFor(() =>
-    expect(handleSubmit).toHaveBeenCalledWith(testData, expect.anything()),
-  );
-});
+    expect(handleSubmit).toHaveBeenCalledWith(testData, expect.anything())
+  )
+})
 
 test('should fail submission if validation fails', async () => {
-  const handleSubmit = vi.fn() as SubmitHandler<z.infer<typeof schema>>;
+  const handleSubmit = vi.fn() as SubmitHandler<z.infer<typeof schema>>
 
   rtlRender(
     <Form onSubmit={handleSubmit} schema={schema} id="my-form">
@@ -63,12 +63,12 @@ test('should fail submission if validation fails', async () => {
           </Button>
         </>
       )}
-    </Form>,
-  );
+    </Form>
+  )
 
-  await userEvent.click(screen.getByRole('button', { name: /submit/i }));
+  await userEvent.click(screen.getByRole('button', { name: /submit/i }))
 
-  await screen.findByRole('alert', { name: /required/i });
+  await screen.findByRole('alert', { name: /required/i })
 
-  expect(handleSubmit).toHaveBeenCalledTimes(0);
-});
+  expect(handleSubmit).toHaveBeenCalledTimes(0)
+})

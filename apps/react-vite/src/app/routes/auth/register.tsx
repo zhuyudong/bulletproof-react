@@ -1,28 +1,28 @@
-import { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import { AuthLayout } from '@/components/layouts/auth-layout';
-import { RegisterForm } from '@/features/auth/components/register-form';
-import { useTeams } from '@/features/teams/api/get-teams';
+import { AuthLayout } from '@/components/layouts/auth-layout'
+import { RegisterForm } from '@/features/auth/components/register-form'
+import { useTeams } from '@/features/teams/api/get-teams'
 
 export const RegisterRoute = () => {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get('redirectTo');
-  const [chooseTeam, setChooseTeam] = useState(false);
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirectTo')
+  const [chooseTeam, setChooseTeam] = useState(false)
 
   const teamsQuery = useTeams({
     queryConfig: {
-      enabled: chooseTeam,
-    },
-  });
+      enabled: chooseTeam
+    }
+  })
 
   return (
     <AuthLayout title="Register your account">
       <RegisterForm
         onSuccess={() =>
           navigate(`${redirectTo ? `${redirectTo}` : '/app'}`, {
-            replace: true,
+            replace: true
           })
         }
         chooseTeam={chooseTeam}
@@ -30,5 +30,5 @@ export const RegisterRoute = () => {
         teams={teamsQuery.data?.data}
       />
     </AuthLayout>
-  );
-};
+  )
+}

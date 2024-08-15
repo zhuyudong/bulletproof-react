@@ -1,25 +1,25 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom'
 
-import { Button } from '@/components/ui/button';
-import { Form, Input } from '@/components/ui/form';
-import { useLogin, loginInputSchema } from '@/lib/auth';
+import { Button } from '@/components/ui/button'
+import { Form, Input } from '@/components/ui/form'
+import { useLogin, loginInputSchema } from '@/lib/auth'
 
 type LoginFormProps = {
-  onSuccess: () => void;
-};
+  onSuccess: () => void
+}
 
 export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const login = useLogin({
-    onSuccess,
-  });
-  const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get('redirectTo');
+    onSuccess
+  })
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirectTo')
 
   return (
     <div>
       <Form
-        onSubmit={(values) => {
-          login.mutate(values);
+        onSubmit={values => {
+          login.mutate(values)
         }}
         schema={loginInputSchema}
       >
@@ -60,5 +60,5 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

@@ -1,11 +1,11 @@
-import { ContentLayout } from '@/components/layouts';
-import { UpdateProfile } from '@/features/users/components/update-profile';
-import { useUser } from '@/lib/auth';
+import { ContentLayout } from '@/components/layouts'
+import { UpdateProfile } from '@/features/users/components/update-profile'
+import { useUser } from '@/lib/auth'
 
 type EntryProps = {
-  label: string;
-  value: string;
-};
+  label: string
+  value: string
+}
 const Entry = ({ label, value }: EntryProps) => (
   <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 sm:py-5">
     <dt className="text-sm font-medium text-gray-500">{label}</dt>
@@ -13,12 +13,12 @@ const Entry = ({ label, value }: EntryProps) => (
       {value}
     </dd>
   </div>
-);
+)
 
 export const ProfileRoute = () => {
-  const user = useUser();
+  const user = useUser()
 
-  if (!user.data) return null;
+  if (!user.data) return null
 
   return (
     <ContentLayout title="Profile">
@@ -45,5 +45,5 @@ export const ProfileRoute = () => {
         </div>
       </div>
     </ContentLayout>
-  );
-};
+  )
+}

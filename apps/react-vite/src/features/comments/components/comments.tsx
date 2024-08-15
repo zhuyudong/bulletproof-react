@@ -1,9 +1,9 @@
-import { CommentsList } from './comments-list';
-import { CreateComment } from './create-comment';
+import { CommentsList } from './comments-list'
+import { CreateComment } from './create-comment'
 
 type CommentsProps = {
-  discussionId: string;
-};
+  discussionId: string
+}
 
 export const Comments = ({ discussionId }: CommentsProps) => {
   return (
@@ -14,5 +14,5 @@ export const Comments = ({ discussionId }: CommentsProps) => {
       </div>
       <CommentsList discussionId={discussionId} />
     </div>
-  );
-};
+  )
+}

@@ -1,37 +1,37 @@
-import * as React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import * as React from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 
-import { Button } from '@/components/ui/button';
-import { Form, Input, Select, Label, Switch } from '@/components/ui/form';
-import { useRegister, registerInputSchema } from '@/lib/auth';
-import { Team } from '@/types/api';
+import { Button } from '@/components/ui/button'
+import { Form, Input, Select, Label, Switch } from '@/components/ui/form'
+import { useRegister, registerInputSchema } from '@/lib/auth'
+import type { Team } from '@/types/api'
 
 type RegisterFormProps = {
-  onSuccess: () => void;
-  chooseTeam: boolean;
-  setChooseTeam: () => void;
-  teams?: Team[];
-};
+  onSuccess: () => void
+  chooseTeam: boolean
+  setChooseTeam: () => void
+  teams?: Team[]
+}
 
 export const RegisterForm = ({
   onSuccess,
   chooseTeam,
   setChooseTeam,
-  teams,
+  teams
 }: RegisterFormProps) => {
-  const registering = useRegister({ onSuccess });
-  const [searchParams] = useSearchParams();
-  const redirectTo = searchParams.get('redirectTo');
+  const registering = useRegister({ onSuccess })
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirectTo')
 
   return (
     <div>
       <Form
-        onSubmit={(values) => {
-          registering.mutate(values);
+        onSubmit={values => {
+          registering.mutate(values)
         }}
         schema={registerInputSchema}
         options={{
-          shouldUnregister: true,
+          shouldUnregister: true
         }}
       >
         {({ register, formState }) => (
@@ -78,9 +78,9 @@ export const RegisterForm = ({
                 label="Team"
                 error={formState.errors['teamId']}
                 registration={register('teamId')}
-                options={teams?.map((team) => ({
+                options={teams?.map(team => ({
                   label: team.name,
-                  value: team.id,
+                  value: team.id
                 }))}
               />
             ) : (
@@ -114,5 +114,5 @@ export const RegisterForm = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

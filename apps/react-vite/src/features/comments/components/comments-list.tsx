@@ -1,34 +1,34 @@
-import { ArchiveX } from 'lucide-react';
+import { ArchiveX } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
-import { MDPreview } from '@/components/ui/md-preview';
-import { Spinner } from '@/components/ui/spinner';
-import { useUser } from '@/lib/auth';
-import { POLICIES, Authorization } from '@/lib/authorization';
-import { User } from '@/types/api';
-import { formatDate } from '@/utils/format';
+import { Button } from '@/components/ui/button'
+import { MDPreview } from '@/components/ui/md-preview'
+import { Spinner } from '@/components/ui/spinner'
+import { useUser } from '@/lib/auth'
+import { POLICIES, Authorization } from '@/lib/authorization'
+import type { User } from '@/types/api'
+import { formatDate } from '@/utils/format'
 
-import { useInfiniteComments } from '../api/get-comments';
+import { useInfiniteComments } from '../api/get-comments'
 
-import { DeleteComment } from './delete-comment';
+import { DeleteComment } from './delete-comment'
 
 type CommentsListProps = {
-  discussionId: string;
-};
+  discussionId: string
+}
 
 export const CommentsList = ({ discussionId }: CommentsListProps) => {
-  const user = useUser();
-  const commentsQuery = useInfiniteComments({ discussionId });
+  const user = useUser()
+  const commentsQuery = useInfiniteComments({ discussionId })
 
   if (commentsQuery.isLoading) {
     return (
       <div className="flex h-48 w-full items-center justify-center">
         <Spinner size="lg" />
       </div>
-    );
+    )
   }
 
-  const comments = commentsQuery.data?.pages.flatMap((page) => page.data);
+  const comments = commentsQuery.data?.pages.flatMap(page => page.data)
 
   if (!comments?.length)
     return (
@@ -40,7 +40,7 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
         <ArchiveX className="size-10" />
         <h4>No Comments Found</h4>
       </div>
-    );
+    )
 
   return (
     <>
@@ -54,7 +54,7 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
             <Authorization
               policyCheck={POLICIES['comment:delete'](
                 user.data as User,
-                comment,
+                comment
               )}
             >
               <div className="flex justify-between">
@@ -89,5 +89,5 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
         </div>
       )}
     </>
-  );
-};
+  )
+}

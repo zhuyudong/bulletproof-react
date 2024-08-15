@@ -1,4 +1,4 @@
-import { Info, CircleAlert, CircleX, CircleCheck } from 'lucide-react';
+import { Info, CircleAlert, CircleX, CircleCheck } from 'lucide-react'
 
 const icons = {
   info: <Info className="size-6 text-blue-500" aria-hidden="true" />,
@@ -6,22 +6,22 @@ const icons = {
   warning: (
     <CircleAlert className="size-6 text-yellow-500" aria-hidden="true" />
   ),
-  error: <CircleX className="size-6 text-red-500" aria-hidden="true" />,
-};
+  error: <CircleX className="size-6 text-red-500" aria-hidden="true" />
+}
 
 export type NotificationProps = {
   notification: {
-    id: string;
-    type: keyof typeof icons;
-    title: string;
-    message?: string;
-  };
-  onDismiss: (id: string) => void;
-};
+    id: string
+    type: keyof typeof icons
+    title: string
+    message?: string
+  }
+  onDismiss: (id: string) => void
+}
 
 export const Notification = ({
   notification: { id, type, title, message },
-  onDismiss,
+  onDismiss
 }: NotificationProps) => {
   return (
     <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
@@ -37,7 +37,7 @@ export const Notification = ({
               <button
                 className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
                 onClick={() => {
-                  onDismiss(id);
+                  onDismiss(id)
                 }}
               >
                 <span className="sr-only">Close</span>
@@ -48,5 +48,5 @@ export const Notification = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

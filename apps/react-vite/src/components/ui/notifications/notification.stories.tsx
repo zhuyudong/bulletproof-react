@@ -1,18 +1,18 @@
-import { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { Notification } from './notification';
+import { Notification } from './notification'
 
 const meta: Meta<typeof Notification> = {
   title: 'Components/Notifications',
   component: Notification,
   parameters: {
-    controls: { expanded: true },
-  },
-};
+    controls: { expanded: true }
+  }
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Notification>;
+type Story = StoryObj<typeof Notification>
 
 export const Info: Story = {
   args: {
@@ -20,11 +20,11 @@ export const Info: Story = {
       id: '1',
       type: 'info',
       title: 'Hello Info',
-      message: 'This is info notification',
+      message: 'This is info notification'
     },
-    onDismiss: (id) => alert(`Dismissing Notification with id: ${id}`),
-  },
-};
+    onDismiss: id => alert(`Dismissing Notification with id: ${id}`)
+  }
+}
 
 export const Success: Story = {
   args: {
@@ -32,11 +32,11 @@ export const Success: Story = {
       id: '1',
       type: 'success',
       title: 'Hello Success',
-      message: 'This is success notification',
+      message: 'This is success notification'
     },
-    onDismiss: (id) => alert(`Dismissing Notification with id: ${id}`),
-  },
-};
+    onDismiss: id => alert(`Dismissing Notification with id: ${id}`)
+  }
+}
 
 export const Warning: Story = {
   args: {
@@ -44,11 +44,11 @@ export const Warning: Story = {
       id: '1',
       type: 'warning',
       title: 'Hello Warning',
-      message: 'This is warning notification',
+      message: 'This is warning notification'
     },
-    onDismiss: (id) => alert(`Dismissing Notification with id: ${id}`),
-  },
-};
+    onDismiss: id => alert(`Dismissing Notification with id: ${id}`)
+  }
+}
 
 export const Error: Story = {
   args: {
@@ -56,8 +56,8 @@ export const Error: Story = {
       id: '1',
       type: 'error',
       title: 'Hello Error',
-      message: 'This is error notification',
+      message: 'This is error notification'
     },
-    onDismiss: (id) => alert(`Dismissing Notification with id: ${id}`),
-  },
-};
+    onDismiss: id => alert(`Dismissing Notification with id: ${id}`)
+  }
+}
