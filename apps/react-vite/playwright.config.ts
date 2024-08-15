@@ -1,6 +1,6 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test'
 
-const PORT = 3000;
+const PORT = 3000
 
 /**
  * Read environment variables from file.
@@ -29,7 +29,7 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on-first-retry'
   },
 
   /* Configure projects for major browsers */
@@ -40,17 +40,17 @@ export default defineConfig({
       testMatch: /.*\.spec\.ts/,
       use: {
         ...devices['Desktop Chrome'],
-        storageState: 'e2e/.auth/user.json',
+        storageState: 'e2e/.auth/user.json'
       },
-      dependencies: ['setup'],
-    },
+      dependencies: ['setup']
+    }
   ],
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: `yarn dev --port ${PORT}`,
+    command: `pnpm dev --port ${PORT}`,
     timeout: 10 * 1000,
     port: PORT,
-    reuseExistingServer: !process.env.CI,
-  },
-});
+    reuseExistingServer: !process.env.CI
+  }
+})
