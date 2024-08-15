@@ -35,7 +35,7 @@ const TestDialog = () => {
       <DialogTrigger asChild>
         <Button variant="outline">{openButtonText}</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent aria-describedby={undefined} className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{titleText}</DialogTitle>
         </DialogHeader>

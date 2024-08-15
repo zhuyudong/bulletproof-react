@@ -8,7 +8,7 @@ export const encode = (obj: any) => {
     typeof window === 'undefined'
       ? (str: string) => Buffer.from(str, 'binary').toString('base64')
       : window.btoa
-  return btoa(JSON.stringify(obj))
+  return btoa(encodeURIComponent(JSON.stringify(obj)))
 }
 
 export const decode = (str: string) => {
@@ -16,7 +16,7 @@ export const decode = (str: string) => {
     typeof window === 'undefined'
       ? (str: string) => Buffer.from(str, 'base64').toString('binary')
       : window.atob
-  return JSON.parse(atob(str))
+  return JSON.parse(decodeURIComponent(atob(str)))
 }
 
 export const hash = (str: string) => {

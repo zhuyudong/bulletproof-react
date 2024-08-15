@@ -54,7 +54,7 @@ export const ConfirmationDialog = ({
       }}
     >
       <DialogTrigger asChild>{triggerButton}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent aria-describedby={undefined} className="sm:max-w-[425px]">
         <DialogHeader className="flex">
           <DialogTitle className="flex items-center gap-2">
             {' '}
