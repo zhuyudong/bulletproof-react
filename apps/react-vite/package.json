@@ -5,21 +5,26 @@
   "scripts": {
     "build": "tsc && vite build --base=/",
     "build-storybook": "storybook build",
-    "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "dev": "vite",
+    "format": "prettier \"**/*.+(js|json|ts|tsx)\" --config prettier.config.js --ignore-unknown --ignore-path ./.prettierignore --list-different --cache",
+    "format:check": "npm run format -- --check --list-different",
+    "format:write": "npm run format -- --write",
     "generate": "plop",
     "lint": "eslint src --ignore-path .gitignore",
-    "prepare": "husky",
+    "lint:css": "stylelint \"**/*.{css,scss,sass,less}\" \"!**/min.css/**\" --config ./stylelint.config.js --allow-empty-input -i ./.stylelintignore --fix -f verbose",
+    "lint:js": "eslint src --ignore-path .eslintignore --fix",
+    "prepare": "[ -d .git ] && npx husky || echo 'ignore husky'",
     "preview": "vite preview",
     "run-mock-server": "vite-node mock-server.ts | pino-pretty -c",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
-    "test-e2e": "pm2 start \"pnpm run-mock-server\" --name server && pnpm playwright test"
+    "test-e2e": "pm2 start \"pnpm run-mock-server\" --name server && pnpm playwright test",
+    "types:check": "tsc --project tsconfig.json --pretty --noEmit"
   },
   "lint-staged": {
     "*.+(ts|tsx)": [
       "pnpm lint",
-      "bash -c 'pnpm check-types'"
+      "bash -c 'pnpm types:check'"
     ]
   },
   "dependencies": {

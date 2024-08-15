@@ -1,21 +1,21 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
-import logo from '@/assets/logo.svg';
-import { Head } from '@/components/seo';
-import { Button } from '@/components/ui/button';
-import { useUser } from '@/lib/auth';
+import logo from '@/assets/logo.svg'
+import { Head } from '@/components/seo'
+import { Button } from '@/components/ui/button'
+import { useUser } from '@/lib/auth'
 
 export const LandingRoute = () => {
-  const navigate = useNavigate();
-  const user = useUser();
+  const navigate = useNavigate()
+  const user = useUser()
 
   const handleStart = () => {
     if (user.data) {
-      navigate('/app');
+      navigate('/app')
     } else {
-      navigate('/auth/login');
+      navigate('/auth/login')
     }
-  };
+  }
 
   return (
     <>
@@ -81,5 +81,5 @@ export const LandingRoute = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
