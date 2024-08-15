@@ -1,6 +1,6 @@
 import { CircleAlert, Info } from 'lucide-react'
-import * as React from 'react'
-import { useEffect } from 'react'
+import type { ReactElement } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { useDisclosure } from '@/hooks/use-disclosure'
@@ -15,8 +15,8 @@ import {
 } from '../dialog'
 
 export type ConfirmationDialogProps = {
-  triggerButton: React.ReactElement
-  confirmButton: React.ReactElement
+  triggerButton: ReactElement
+  confirmButton: ReactElement
   title: string
   body?: string
   cancelButtonText?: string
@@ -34,7 +34,7 @@ export const ConfirmationDialog = ({
   isDone = false
 }: ConfirmationDialogProps) => {
   const { close, open, isOpen } = useDisclosure()
-  const cancelButtonRef = React.useRef(null)
+  const cancelButtonRef = useRef(null)
 
   useEffect(() => {
     if (isDone) {

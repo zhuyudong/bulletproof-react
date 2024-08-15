@@ -1,4 +1,5 @@
 import { Home, PanelLeft, Folder, Users, User2 } from 'lucide-react'
+import type { ReactNode, SVGProps } from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useNavigation } from 'react-router-dom'
 
@@ -21,7 +22,7 @@ import { Link } from '../ui/link'
 type SideNavigationItem = {
   name: string
   to: string
-  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element
 }
 
 const Logo = () => {
@@ -75,7 +76,7 @@ const Progress = () => {
   )
 }
 
-export function DashboardLayout({ children }: { children: React.ReactNode }) {
+export function DashboardLayout({ children }: { children: ReactNode }) {
   const logout = useLogout()
   const { checkAccess } = useAuthorization()
   const navigate = useNavigate()

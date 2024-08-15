@@ -1,4 +1,4 @@
-import * as React from 'react'
+import type { ReactNode } from 'react'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import { Link } from '@/components/ui/link'
 import { useUser } from '@/lib/auth'
 
 type LayoutProps = {
-  children: React.ReactNode
+  children: ReactNode
   title: string
 }
 

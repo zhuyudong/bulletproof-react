@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import * as React from 'react'
+import { useRef } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { useDisclosure } from '@/hooks/use-disclosure'
@@ -16,7 +16,7 @@ import {
 
 const DemoDialog = () => {
   const { close, open, isOpen } = useDisclosure()
-  const cancelButtonRef = React.useRef(null)
+  const cancelButtonRef = useRef(null)
 
   return (
     <Dialog

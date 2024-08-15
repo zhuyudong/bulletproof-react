@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { forwardRef, type InputHTMLAttributes } from 'react'
 import { type UseFormRegisterReturn } from 'react-hook-form'
 
 import { cn } from '@/utils/cn'
@@ -6,13 +6,13 @@ import { cn } from '@/utils/cn'
 import type { FieldWrapperPassThroughProps } from './field-wrapper'
 import { FieldWrapper } from './field-wrapper'
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement> &
+export type InputProps = InputHTMLAttributes<HTMLInputElement> &
   FieldWrapperPassThroughProps & {
     className?: string
     registration: Partial<UseFormRegisterReturn>
   }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, error, registration, ...props }, ref) => {
     return (
       <FieldWrapper label={label} error={error}>

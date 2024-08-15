@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import './index.css'
@@ -10,8 +10,8 @@ if (!root) throw new Error('No root element found')
 
 enableMocking().then(() => {
   createRoot(root).render(
-    <React.StrictMode>
+    <StrictMode>
       <App />
-    </React.StrictMode>
+    </StrictMode>
   )
 })
