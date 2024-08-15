@@ -8,16 +8,16 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-docs',
-    '@storybook/addon-a11y',
+    '@storybook/addon-a11y'
   ],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
+    options: {}
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: 'tag'
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-  },
-};
+    reactDocgen: 'react-docgen-typescript'
+  }
+}

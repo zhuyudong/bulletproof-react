@@ -195,8 +195,11 @@ module.exports = {
       ]
     },
     {
-      files: ['**/*.spec.ts'],
-      extends: ['plugin:playwright/recommended']
+      files: ['**/*.spec.ts', 'e2e/**/*.ts'],
+      extends: ['plugin:playwright/recommended'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'off'
+      }
     },
     {
       files: ['*.stories.*'],
