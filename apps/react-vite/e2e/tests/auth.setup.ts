@@ -14,15 +14,15 @@ setup('authenticate', async ({ page }) => {
 
   // registration:
   await page.getByLabel('First Name').click()
-  await page.getByLabel('First Name').fill(user.firstName)
+  await page.getByLabel('First Name').fill(user.first_name)
   await page.getByLabel('Last Name').click()
-  await page.getByLabel('Last Name').fill(user.lastName)
+  await page.getByLabel('Last Name').fill(user.last_name)
   await page.getByLabel('Email Address').click()
   await page.getByLabel('Email Address').fill(user.email)
   await page.getByLabel('Password').click()
   await page.getByLabel('Password').fill(user.password)
   await page.getByLabel('Team Name').click()
-  await page.getByLabel('Team Name').fill(user.teamName)
+  await page.getByLabel('Team Name').fill(user.team_name)
   await page.getByRole('button', { name: 'Register' }).click()
   await page.waitForURL('/app')
 
