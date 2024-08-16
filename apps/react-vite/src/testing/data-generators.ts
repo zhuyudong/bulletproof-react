@@ -10,15 +10,15 @@ import {
 
 const generateUser = () => ({
   id: randUuid() + Math.random(),
-  firstName: randUserName({ withAccents: false }),
-  lastName: randUserName({ withAccents: false }),
+  first_name: randUserName({ withAccents: false }),
+  last_name: randUserName({ withAccents: false }),
   email: randEmail(),
   password: randPassword(),
-  teamId: randUuid(),
-  teamName: randCompanyName(),
+  team_id: randUuid(),
+  team_name: randCompanyName(),
   role: 'ADMIN',
   bio: randParagraph(),
-  createdAt: Date.now()
+  created_at: Date.now()
 })
 
 export const createUser = <T extends Partial<ReturnType<typeof generateUser>>>(
@@ -31,7 +31,7 @@ const generateTeam = () => ({
   id: randUuid(),
   name: randCompanyName(),
   description: randParagraph(),
-  createdAt: Date.now()
+  created_at: Date.now()
 })
 
 export const createTeam = <T extends Partial<ReturnType<typeof generateTeam>>>(
@@ -44,15 +44,15 @@ const generateDiscussion = () => ({
   id: randUuid(),
   title: randCatchPhrase(),
   body: randParagraph(),
-  createdAt: Date.now()
+  created_at: Date.now()
 })
 
 export const createDiscussion = <
   T extends Partial<ReturnType<typeof generateDiscussion>>
 >(
   overrides?: T & {
-    authorId?: string
-    teamId?: string
+    author_id?: string
+    team_id?: string
   }
 ) => {
   return { ...generateDiscussion(), ...overrides }
@@ -61,15 +61,15 @@ export const createDiscussion = <
 const generateComment = () => ({
   id: randUuid(),
   body: randParagraph(),
-  createdAt: Date.now()
+  created_at: Date.now()
 })
 
 export const createComment = <
   T extends Partial<ReturnType<typeof generateComment>>
 >(
   overrides?: T & {
-    authorId?: string
-    discussionId?: string
+    author_id?: string
+    discussion_id?: string
   }
 ) => {
   return { ...generateComment(), ...overrides }

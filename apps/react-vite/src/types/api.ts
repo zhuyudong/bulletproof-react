@@ -4,7 +4,7 @@
 
 export type BaseEntity = {
   id: string
-  createdAt: number
+  created_at: number
 }
 
 export type Entity<T> = {
@@ -14,15 +14,15 @@ export type Entity<T> = {
 export type Meta = {
   page: number
   total: number
-  totalPages: number
+  total_pages: number
 }
 
 export type User = Entity<{
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   email: string
   role: 'ADMIN' | 'USER'
-  teamId: string
+  team_id: string
   bio: string
 }>
 
@@ -39,12 +39,12 @@ export type Team = Entity<{
 export type Discussion = Entity<{
   title: string
   body: string
-  teamId: string
+  team_id: string
   author: User
 }>
 
 export type Comment = Entity<{
   body: string
-  discussionId: string
+  discussion_id: string
   author: User
 }>

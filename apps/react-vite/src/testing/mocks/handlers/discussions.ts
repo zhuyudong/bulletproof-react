@@ -26,8 +26,8 @@ export const discussionsHandlers = [
 
       const total = db.discussion.count({
         where: {
-          teamId: {
-            equals: user?.teamId
+          team_id: {
+            equals: user?.team_id
           }
         }
       })
@@ -37,18 +37,18 @@ export const discussionsHandlers = [
       const result = db.discussion
         .findMany({
           where: {
-            teamId: {
-              equals: user?.teamId
+            team_id: {
+              equals: user?.team_id
             }
           },
           take: 10,
           skip: 10 * (page - 1)
         })
-        .map(({ authorId, ...discussion }) => {
+        .map(({ author_id, ...discussion }) => {
           const author = db.user.findFirst({
             where: {
               id: {
-                equals: authorId
+                equals: author_id
               }
             }
           })
@@ -62,7 +62,7 @@ export const discussionsHandlers = [
         meta: {
           page,
           total,
-          totalPages
+          total_pages: totalPages
         }
       })
     } catch (error: any) {
@@ -74,7 +74,7 @@ export const discussionsHandlers = [
   }),
 
   http.get(
-    `${env.API_URL}/discussions/:discussionId`,
+    `${env.API_URL}/discussions/:discussion_id`,
     async ({ params, cookies }) => {
       await networkDelay()
 
@@ -83,14 +83,14 @@ export const discussionsHandlers = [
         if (error) {
           return HttpResponse.json({ message: error }, { status: 401 })
         }
-        const discussionId = params.discussionId as string
+        const discussion_id = params.discussion_id as string
         const discussion = db.discussion.findFirst({
           where: {
             id: {
-              equals: discussionId
+              equals: discussion_id
             },
-            teamId: {
-              equals: user?.teamId
+            team_id: {
+              equals: user?.team_id
             }
           }
         })
@@ -105,7 +105,7 @@ export const discussionsHandlers = [
         const author = db.user.findFirst({
           where: {
             id: {
-              equals: discussion.authorId
+              equals: discussion.author_id
             }
           }
         })
@@ -136,8 +136,8 @@ export const discussionsHandlers = [
       const data = (await request.json()) as DiscussionBody
       requireAdmin(user)
       const result = db.discussion.create({
-        teamId: user?.teamId,
-        authorId: user?.id,
+        team_id: user?.team_id,
+        author_id: user?.id,
         ...data
       })
       await persistDb('discussion')
@@ -151,7 +151,7 @@ export const discussionsHandlers = [
   }),
 
   http.patch(
-    `${env.API_URL}/discussions/:discussionId`,
+    `${env.API_URL}/discussions/:discussion_id`,
     async ({ request, params, cookies }) => {
       await networkDelay()
 
@@ -161,15 +161,15 @@ export const discussionsHandlers = [
           return HttpResponse.json({ message: error }, { status: 401 })
         }
         const data = (await request.json()) as DiscussionBody
-        const discussionId = params.discussionId as string
+        const discussion_id = params.discussion_id as string
         requireAdmin(user)
         const result = db.discussion.update({
           where: {
-            teamId: {
-              equals: user?.teamId
+            team_id: {
+              equals: user?.team_id
             },
             id: {
-              equals: discussionId
+              equals: discussion_id
             }
           },
           data
@@ -186,7 +186,7 @@ export const discussionsHandlers = [
   ),
 
   http.delete(
-    `${env.API_URL}/discussions/:discussionId`,
+    `${env.API_URL}/discussions/:discussion_id`,
     async ({ cookies, params }) => {
       await networkDelay()
 
@@ -195,12 +195,12 @@ export const discussionsHandlers = [
         if (error) {
           return HttpResponse.json({ message: error }, { status: 401 })
         }
-        const discussionId = params.discussionId as string
+        const discussion_id = params.discussion_id as string
         requireAdmin(user)
         const result = db.discussion.delete({
           where: {
             id: {
-              equals: discussionId
+              equals: discussion_id
             }
           }
         })

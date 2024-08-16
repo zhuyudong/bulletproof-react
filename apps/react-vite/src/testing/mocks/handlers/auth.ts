@@ -13,12 +13,12 @@ import {
 } from '../utils'
 
 type RegisterBody = {
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   email: string
   password: string
-  teamId?: string
-  teamName?: string
+  team_id?: string
+  team_name?: string
 }
 
 type LoginBody = {
@@ -50,9 +50,9 @@ export const authHandlers = [
       let teamId
       let role
 
-      if (!userObject.teamId) {
+      if (!userObject.team_id) {
         const team = db.team.create({
-          name: userObject.teamName ?? `${userObject.firstName} Team`
+          name: userObject.team_name ?? `${userObject.first_name} Team`
         })
         await persistDb('team')
         teamId = team.id
@@ -61,7 +61,7 @@ export const authHandlers = [
         const existingTeam = db.team.findFirst({
           where: {
             id: {
-              equals: userObject.teamId
+              equals: userObject.team_id
             }
           }
         })
@@ -74,7 +74,7 @@ export const authHandlers = [
             { status: 400 }
           )
         }
-        teamId = userObject.teamId
+        teamId = userObject.team_id
         role = 'USER'
       }
 
@@ -82,7 +82,7 @@ export const authHandlers = [
         ...userObject,
         role,
         password: hash(userObject.password),
-        teamId
+        team_id: teamId
       })
 
       await persistDb('user')

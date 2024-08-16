@@ -48,9 +48,9 @@ export const DiscussionsList = ({
         },
         {
           title: 'Created At',
-          field: 'createdAt',
-          Cell({ entry: { createdAt } }) {
-            return <span>{formatDate(createdAt)}</span>
+          field: 'created_at',
+          Cell({ entry: { created_at } }) {
+            return <span>{formatDate(created_at)}</span>
           }
         },
         {
@@ -81,7 +81,7 @@ export const DiscussionsList = ({
       ]}
       pagination={
         meta && {
-          totalPages: meta.totalPages,
+          totalPages: meta.total_pages,
           currentPage: meta.page,
           rootUrl: ''
         }

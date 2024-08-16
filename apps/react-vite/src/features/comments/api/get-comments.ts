@@ -13,7 +13,7 @@ export const getComments = ({
 }): Promise<{ data: Comment[]; meta: Meta }> => {
   return api.get(`/comments`, {
     params: {
-      discussionId,
+      discussion_id: discussionId,
       page
     }
   })
@@ -26,7 +26,7 @@ export const getInfiniteCommentsQueryOptions = (discussionId: string) => {
       return getComments({ discussionId, page: pageParam as number })
     },
     getNextPageParam: lastPage => {
-      if (lastPage?.meta?.page === lastPage?.meta?.totalPages) return undefined
+      if (lastPage?.meta?.page === lastPage?.meta?.total_pages) return undefined
       const nextPage = lastPage.meta.page + 1
       return nextPage
     },

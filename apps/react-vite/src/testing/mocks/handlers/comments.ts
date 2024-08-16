@@ -7,7 +7,7 @@ import { networkDelay, requireAuth, sanitizeUser } from '../utils'
 
 type CreateCommentBody = {
   body: string
-  discussionId: string
+  discussion_id: string
 }
 
 export const commentsHandlers = [
@@ -20,13 +20,13 @@ export const commentsHandlers = [
         return HttpResponse.json({ message: error }, { status: 401 })
       }
       const url = new URL(request.url)
-      const discussionId = url.searchParams.get('discussionId') || ''
+      const discussion_id = url.searchParams.get('discussion_id') || ''
       const page = Number(url.searchParams.get('page') || 1)
 
       const total = db.comment.count({
         where: {
-          discussionId: {
-            equals: discussionId
+          discussion_id: {
+            equals: discussion_id
           }
         }
       })
@@ -36,18 +36,18 @@ export const commentsHandlers = [
       const comments = db.comment
         .findMany({
           where: {
-            discussionId: {
-              equals: discussionId
+            discussion_id: {
+              equals: discussion_id
             }
           },
           take: 10,
           skip: 10 * (page - 1)
         })
-        .map(({ authorId, ...comment }) => {
+        .map(({ author_id, ...comment }) => {
           const author = db.user.findFirst({
             where: {
               id: {
-                equals: authorId
+                equals: author_id
               }
             }
           })
@@ -61,7 +61,7 @@ export const commentsHandlers = [
         meta: {
           page,
           total,
-          totalPages
+          total_pages: totalPages
         }
       })
     } catch (error: any) {
@@ -82,7 +82,7 @@ export const commentsHandlers = [
       }
       const data = (await request.json()) as CreateCommentBody
       const result = db.comment.create({
-        authorId: user?.id,
+        author_id: user?.id,
         ...data
       })
       await persistDb('comment')
@@ -112,7 +112,7 @@ export const commentsHandlers = [
               equals: commentId
             },
             ...(user?.role === 'USER' && {
-              authorId: {
+              author_id: {
                 equals: user.id
               }
             })

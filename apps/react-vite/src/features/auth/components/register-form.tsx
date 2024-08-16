@@ -38,14 +38,14 @@ export const RegisterForm = ({
             <Input
               type="text"
               label="First Name"
-              error={formState.errors['firstName']}
-              registration={register('firstName')}
+              error={formState.errors['first_name']}
+              registration={register('first_name')}
             />
             <Input
               type="text"
               label="Last Name"
-              error={formState.errors['lastName']}
-              registration={register('lastName')}
+              error={formState.errors['last_name']}
+              registration={register('last_name')}
             />
             <Input
               type="email"
@@ -75,8 +75,8 @@ export const RegisterForm = ({
             {chooseTeam && teams ? (
               <Select
                 label="Team"
-                error={formState.errors['teamId']}
-                registration={register('teamId')}
+                error={formState.errors['team_id']}
+                registration={register('team_id')}
                 options={teams?.map(team => ({
                   label: team.name,
                   value: team.id
@@ -86,8 +86,8 @@ export const RegisterForm = ({
               <Input
                 type="text"
                 label="Team Name"
-                error={formState.errors['teamName']}
-                registration={register('teamName')}
+                error={formState.errors['team_name']}
+                registration={register('team_name')}
               />
             )}
             <div>

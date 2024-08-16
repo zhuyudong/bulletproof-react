@@ -7,8 +7,8 @@ import { requireAuth, requireAdmin, sanitizeUser, networkDelay } from '../utils'
 
 type ProfileBody = {
   email: string
-  firstName: string
-  lastName: string
+  first_name: string
+  last_name: string
   bio: string
 }
 
@@ -24,8 +24,8 @@ export const usersHandlers = [
       const result = db.user
         .findMany({
           where: {
-            teamId: {
-              equals: user?.teamId
+            team_id: {
+              equals: user?.team_id
             }
           }
         })
@@ -82,8 +82,8 @@ export const usersHandlers = [
           id: {
             equals: userId
           },
-          teamId: {
-            equals: user?.teamId
+          team_id: {
+            equals: user?.team_id
           }
         }
       })
