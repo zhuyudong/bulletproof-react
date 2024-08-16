@@ -28,13 +28,13 @@ export const LandingRoute = () => {
           <img src={logo} alt="react" />
           <p>Showcasing Best Practices For Building React Applications</p>
           <div className="mt-8 flex justify-center">
-            <div className="inline-flex rounded-md shadow">
+            <div className="inline-flex rounded-sm shadow">
               <Button
                 onClick={handleStart}
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="size-6"
+                    className="size-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -63,7 +63,7 @@ export const LandingRoute = () => {
                     <svg
                       fill="currentColor"
                       viewBox="0 0 24 24"
-                      className="size-6"
+                      className="size-5"
                     >
                       <path
                         fillRule="evenodd"

@@ -105,7 +105,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
               className={({ isActive }) =>
                 cn(
                   'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'group flex w-full flex-1 items-center rounded-md p-2 text-base font-medium',
+                  'group flex w-full flex-1 items-center rounded-sm p-2 text-base font-medium',
                   isActive && 'bg-gray-900 text-white'
                 )
               }
@@ -113,7 +113,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
               <item.icon
                 className={cn(
                   'text-gray-400 group-hover:text-gray-300',
-                  'mr-4 size-6 shrink-0'
+                  'mr-4 size-5 shrink-0'
                 )}
                 aria-hidden="true"
               />
@@ -148,7 +148,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
                     className={({ isActive }) =>
                       cn(
                         'text-gray-300 hover:bg-gray-700 hover:text-white',
-                        'group flex w-full flex-1 items-center rounded-md p-2 text-base font-medium',
+                        'group flex w-full flex-1 items-center rounded-sm p-2 text-base font-medium',
                         isActive && 'bg-gray-900 text-white'
                       )
                     }
@@ -156,7 +156,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
                     <item.icon
                       className={cn(
                         'text-gray-400 group-hover:text-gray-300',
-                        'mr-4 size-6 shrink-0'
+                        'mr-4 size-5 shrink-0'
                       )}
                       aria-hidden="true"
                     />
@@ -174,7 +174,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
                 className="overflow-hidden rounded-full"
               >
                 <span className="sr-only">Open user menu</span>
-                <User2 className="size-6 rounded-full" />
+                <User2 className="size-5 rounded-full" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">

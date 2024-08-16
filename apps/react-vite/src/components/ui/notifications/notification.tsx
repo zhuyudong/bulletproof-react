@@ -1,12 +1,12 @@
 import { Info, CircleAlert, CircleX, CircleCheck } from 'lucide-react'
 
 const icons = {
-  info: <Info className="size-6 text-blue-500" aria-hidden="true" />,
-  success: <CircleCheck className="size-6 text-green-500" aria-hidden="true" />,
+  info: <Info className="size-5 text-blue-500" aria-hidden="true" />,
+  success: <CircleCheck className="size-5 text-green-500" aria-hidden="true" />,
   warning: (
-    <CircleAlert className="size-6 text-yellow-500" aria-hidden="true" />
+    <CircleAlert className="size-5 text-yellow-500" aria-hidden="true" />
   ),
-  error: <CircleX className="size-6 text-red-500" aria-hidden="true" />
+  error: <CircleX className="size-5 text-red-500" aria-hidden="true" />
 }
 
 export type NotificationProps = {
@@ -25,7 +25,7 @@ export const Notification = ({
 }: NotificationProps) => {
   return (
     <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
-      <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black/5">
+      <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black/5">
         <div className="p-4" role="alert" aria-label={title}>
           <div className="flex items-start">
             <div className="shrink-0">{icons[type]}</div>
@@ -35,7 +35,7 @@ export const Notification = ({
             </div>
             <div className="ml-4 flex shrink-0">
               <button
-                className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
+                className="inline-flex rounded-sm bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2"
                 onClick={() => {
                   onDismiss(id)
                 }}
