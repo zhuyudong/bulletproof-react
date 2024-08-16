@@ -59,7 +59,7 @@ export const CreateComment = ({ discussionId }: CreateCommentProps) => {
         options={{
           defaultValues: {
             body: '',
-            discussionId: discussionId
+            discussion_id: discussionId
           }
         }}
       >

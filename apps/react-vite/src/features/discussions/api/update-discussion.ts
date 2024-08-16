@@ -16,12 +16,12 @@ export type UpdateDiscussionInput = z.infer<typeof updateDiscussionInputSchema>
 
 export const updateDiscussion = ({
   data,
-  discussionId
+  discussion_id
 }: {
   data: UpdateDiscussionInput
-  discussionId: string
+  discussion_id: string
 }): Promise<Discussion> => {
-  return api.patch(`/discussions/${discussionId}`, data)
+  return api.patch(`/discussions/${discussion_id}`, data)
 }
 
 type UseUpdateDiscussionOptions = {

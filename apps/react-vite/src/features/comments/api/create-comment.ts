@@ -8,7 +8,7 @@ import type { Comment } from '@/types/api'
 import { getInfiniteCommentsQueryOptions } from './get-comments'
 
 export const createCommentInputSchema = z.object({
-  discussionId: z.string().min(1, 'Required'),
+  discussion_id: z.string().min(1, 'Required'),
   body: z.string().min(1, 'Required')
 })
 

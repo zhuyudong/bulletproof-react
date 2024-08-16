@@ -5,6 +5,8 @@ import { z } from 'zod'
 
 import type { AuthResponse, User } from '@/types/api'
 
+// TODO: pnpm test 测试不通过，原因待查
+// import { configureAuth } from '@goldwheel/react-query-auth'
 import { api } from './api-client'
 
 // api call definitions for auth (types, schemas, requests):

@@ -14,6 +14,18 @@ pnpm exec playwright install
 pnpm exec playwright show-report
 ```
 
+## workspace
+
+`pnpm add ./packages/react-query-auth -w --registry https://registry.npmmirror.com`
+
+```json
+{
+  "dependencies": {
+    "@goldwheel/react-query-auth": "link:packages/react-query-auth"
+  }
+}
+```
+
 ## 总结
 
 1. 如果没有 .eslintignore 则 eslint 会默认不对 .xxx 形式的文件夹内的文件起作用

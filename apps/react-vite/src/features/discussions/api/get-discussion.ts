@@ -5,17 +5,17 @@ import type { QueryConfig } from '@/lib/react-query'
 import type { Discussion } from '@/types/api'
 
 export const getDiscussion = ({
-  discussionId
+  discussion_id
 }: {
-  discussionId: string
+  discussion_id: string
 }): Promise<{ data: Discussion }> => {
-  return api.get(`/discussions/${discussionId}`)
+  return api.get(`/discussions/${discussion_id}`)
 }
 
-export const getDiscussionQueryOptions = (discussionId: string) => {
+export const getDiscussionQueryOptions = (discussion_id: string) => {
   return queryOptions({
-    queryKey: ['discussions', discussionId],
-    queryFn: () => getDiscussion({ discussionId })
+    queryKey: ['discussions', discussion_id],
+    queryFn: () => getDiscussion({ discussion_id })
   })
 }
 

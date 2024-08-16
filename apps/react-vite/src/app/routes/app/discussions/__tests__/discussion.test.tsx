@@ -74,71 +74,67 @@ test('should update discussion', async () => {
   expect(await screen.findByText(newBody)).toBeInTheDocument()
 })
 
-test(
-  'should create and delete a comment on the discussion',
-  async () => {
-    await renderDiscussion()
+test('should create and delete a comment on the discussion', async () => {
+  await renderDiscussion()
 
-    const comment = 'Hello World'
+  const comment = 'Hello World'
 
-    await userEvent.click(
-      screen.getByRole('button', { name: /create comment/i })
-    )
+  await userEvent.click(screen.getByRole('button', { name: /create comment/i }))
 
-    const drawer = await screen.findByRole('dialog', {
-      name: /create comment/i
-    })
+  const drawer = await screen.findByRole('dialog', {
+    name: /create comment/i
+  })
 
-    const bodyField = await within(drawer).findByText(/body/i)
+  const bodyField = await within(drawer).findByText(/body/i)
 
-    await userEvent.type(bodyField, comment)
+  await userEvent.type(bodyField, comment)
 
-    const submitButton = await within(drawer).findByRole('button', {
-      name: /submit/i
-    })
+  const submitButton = await within(drawer).findByRole('button', {
+    name: /submit/i
+  })
 
-    await userEvent.click(submitButton)
+  await userEvent.click(submitButton)
 
-    await waitFor(() => expect(drawer).not.toBeInTheDocument())
+  await waitFor(() => expect(drawer).not.toBeInTheDocument())
 
-    await screen.findByText(comment)
+  await screen.findByText(comment)
 
-    const commentsList = await screen.findByRole('list', {
-      name: 'comments'
-    })
+  const commentsList = await screen.findByRole('list', {
+    name: 'comments'
+  })
 
-    const commentElements = await within(commentsList).findAllByRole('listitem')
+  const commentElements = await within(commentsList).findAllByRole('listitem')
 
-    const commentElement = commentElements[0]
+  const commentElement = commentElements[0]
 
-    expect(commentElement).toBeInTheDocument()
+  expect(commentElement).toBeInTheDocument()
 
-    const deleteCommentButton = within(commentElement).getByRole('button', {
-      name: /delete comment/i
-      // exact: false,
-    })
+  const deleteCommentButton = within(commentElement).getByRole('button', {
+    name: /delete comment/i
+    // exact: false,
+  })
 
-    await userEvent.click(deleteCommentButton)
+  await userEvent.click(deleteCommentButton)
 
-    const confirmationDialog = await screen.findByRole('dialog', {
-      name: /delete comment/i
-    })
+  const confirmationDialog = await screen.findByRole('dialog', {
+    name: /delete comment/i
+  })
 
-    const confirmationDeleteButton = await within(
-      confirmationDialog
-    ).findByRole('button', {
+  const confirmationDeleteButton = await within(confirmationDialog).findByRole(
+    'button',
+    {
       name: /delete/i
-    })
+    }
+  )
 
-    await userEvent.click(confirmationDeleteButton)
+  await userEvent.click(confirmationDeleteButton)
 
-    await screen.findByText(/comment deleted/i)
+  await screen.findByText(/comment deleted/i)
 
-    await waitFor(() => {
-      expect(within(commentsList).queryByText(comment)).not.toBeInTheDocument()
-    })
-  },
-  {
-    timeout: 20000
-  }
-)
+  await waitFor(() => {
+    expect(within(commentsList).queryByText(comment)).not.toBeInTheDocument()
+  })
+})
+// {
+//   timeout: 20000
+// }

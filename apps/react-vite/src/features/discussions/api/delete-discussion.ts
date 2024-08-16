@@ -6,11 +6,11 @@ import type { MutationConfig } from '@/lib/react-query'
 import { getDiscussionsQueryOptions } from './get-discussions'
 
 export const deleteDiscussion = ({
-  discussionId
+  discussion_id
 }: {
-  discussionId: string
+  discussion_id: string
 }) => {
-  return api.delete(`/discussions/${discussionId}`)
+  return api.delete(`/discussions/${discussion_id}`)
 }
 
 type UseDeleteDiscussionOptions = {

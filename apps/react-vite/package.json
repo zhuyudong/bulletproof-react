@@ -30,6 +30,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
     "@ant-design/pro-components": "^2.7.15",
+    "@goldwheel/react-query-auth": "link:packages/react-query-auth",
     "@headlessui/tailwindcss": "^0.2.1",
     "@heroicons/react": "^2.1.5",
     "@hookform/devtools": "^4.3.1",
@@ -127,6 +128,7 @@
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.9.0",
     "@faker-js/faker": "^8.4.1",
+    "@jest/globals": "^29.7.0",
     "@mswjs/data": "^0.16.1",
     "@mswjs/http-middleware": "^0.10.1",
     "@playwright/test": "^1.46.0",

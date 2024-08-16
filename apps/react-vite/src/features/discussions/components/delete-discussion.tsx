@@ -41,7 +41,7 @@ export const DeleteDiscussion = ({ id }: DeleteDiscussionProps) => {
             type="button"
             variant="destructive"
             onClick={() =>
-              deleteDiscussionMutation.mutate({ discussionId: id })
+              deleteDiscussionMutation.mutate({ discussion_id: id })
             }
           >
             Delete Discussion

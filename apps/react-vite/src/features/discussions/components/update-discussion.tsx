@@ -57,7 +57,7 @@ export const UpdateDiscussion = ({ discussionId }: UpdateDiscussionProps) => {
           onSubmit={values => {
             updateDiscussionMutation.mutate({
               data: values,
-              discussionId
+              discussion_id: discussionId
             })
           }}
           options={{

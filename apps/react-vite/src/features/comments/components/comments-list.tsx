@@ -27,7 +27,6 @@ export const CommentsList = ({ discussionId }: CommentsListProps) => {
       </div>
     )
   }
-
   const comments = commentsQuery.data?.pages.flatMap(page => page.data)
 
   if (!comments?.length)
